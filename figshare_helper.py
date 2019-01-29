@@ -23,7 +23,7 @@ parser.add_argument("--project", help="Existing Project ID to use", type=int)
 parser.add_argument("--article", help="Existing Article ID to use", type=int)
 parser.add_argument("--filepath", help="Path to file or directory of files to upload to an article")
 parser.add_argument("--title", help="Title for new article")
-parser.add_argument("--action", help="Type of action to perform", required=True, choices=['create', 'upload', 'delete'])
+parser.add_argument("--action", help="Type of action to perform", required=True, choices=['create', 'upload', 'delete', 'list'])
 
 args = parser.parse_args()
 
@@ -190,6 +190,9 @@ def main():
     if args.action == 'delete':
         delete_files_of_article(args.article)
   
+    # List files from an existing article
+    if args.action == 'list':
+        list_files_of_article(args.article)
 
 if __name__ == '__main__':
     main()
